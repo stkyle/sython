@@ -20,6 +20,8 @@ The bind -V command lists the current Readline variable names and values. See Ba
 
 A great deal of run-time behavior is changeable with the following variables.
 """
+import readline
+
 params = [
     'bell-style',
     # Controls what happens when Readline wants to ring the terminal bell. If
@@ -277,6 +279,12 @@ SHOW_ALL_IF_UNMODIFIED =                 'show-all-if-unmodified'
 SHOW_MODE_IN_PROMPT =                    'show-mode-in-prompt'
 SKIP_COMPLETED_TEXT =                    'skip-completed-text'
 VISIBLE_STATS =                          'visible-stats'
+
+def set(parameter, value):
+    readline.parse_and_bind(' '.join(['set', parameter, value]))
+
+def key_bind(key, value):
+    pass
 
 # for p in params:
 #     print('%s = %40s' % (p.replace('-','_').upper(), "'"+p+"'"))
